@@ -4,12 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-
 import se.kth.iv1350.processSale.integration.AccountingSystem;
 import se.kth.iv1350.processSale.integration.DiscountHandler;
 import se.kth.iv1350.processSale.integration.InventorySystem;
-import se.kth.iv1350.processSale.util.LogHandler;
 import se.kth.iv1350.processSale.integration.ItemNotFoundException;
 import se.kth.iv1350.processSale.integration.Printer;
 import se.kth.iv1350.processSale.model.RegisteredItem;
@@ -21,18 +18,16 @@ public class ControllerTest{
     private InventorySystem inventorySystem;
     private DiscountHandler discountHandler;
     private Printer printer;
-    private LogHandler logHandler;
     private Controller controller;
     private ItemDTO testingItem;
 
     @BeforeEach
-    public void setUp() throws ItemNotFoundException, ItemRegistrationFailureException, IOException {
+    public void setUp() throws ItemNotFoundException, ItemRegistrationFailureException {
         accountingSystem = new AccountingSystem();
         inventorySystem = new InventorySystem();
         discountHandler = new DiscountHandler();
         printer = new Printer();
-        logHandler = new LogHandler();
-        controller = new Controller(accountingSystem, inventorySystem, discountHandler, printer, logHandler);
+        controller = new Controller(accountingSystem, inventorySystem, discountHandler, printer);
         controller.startSale();
         testingItem = controller.registerNewItem(1234, 2);
     }
