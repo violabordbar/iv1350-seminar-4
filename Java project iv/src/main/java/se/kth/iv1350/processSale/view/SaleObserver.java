@@ -2,7 +2,7 @@ package se.kth.iv1350.processSale.view;
 
 /**
  * The SaleObserver interface defines a contract for classes that want to observe and respond to new sales.
- * It contains a single method, newSale, which is called when a new sale occurs.
+ * It contains a single method, updateRevenue, which is called when a new sale occurs.
  */
 public interface SaleObserver {
 
